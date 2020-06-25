@@ -30,3 +30,7 @@
 ## Usage
 
 python3 emotion_detector.py
+
+## Current work
+
+Yawn detection and number of times yawn detected(count) has been implemented. 
