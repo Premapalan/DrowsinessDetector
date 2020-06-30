@@ -29,8 +29,9 @@
 
 ## Usage
 
-python3 emotion_detector.py
+python3 drowsiness_detector.py
 
 ## Current work
 
-Yawn detection and number of times yawn detected(count) has been implemented. 
+Yawn detection and number of times yawn detected(count) has been implemented.
+eye open and close detection 
