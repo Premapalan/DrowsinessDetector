@@ -1,4 +1,4 @@
-# Emotion Detector  ( Computer vision Fun project :) )
+# Drowsiness Detector  ( Computer vision Fun project :) )
 
 ## Installation
 
@@ -12,7 +12,7 @@
     sudo update-alternatives --config python
     ```
 
-2. git clone https://gitlab.com/pprasathpp/EmotionDetector.git
+2. git clone https://gitlab.com/pprasathpp/DrowsinessDetector.git
 3. pip install virtualenv
 4. enter command : virtualenv your_choice_env
 5. source yout_choice_env/bin/activate
