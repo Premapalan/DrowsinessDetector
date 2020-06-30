@@ -6,6 +6,7 @@ import numpy as np
 # path for predictor
 PREDICTOR_PATH = "shape_predictor_68_face_landmarks.dat"
 predictor = dlib.shape_predictor(PREDICTOR_PATH)
+face_cascade = cv2.CascadeClassifier('Haarcascades/haarcascade_frontalface_default.xml')
 detector = dlib.get_frontal_face_detector()
 
 # ensuring face detection works for single face
@@ -135,53 +136,59 @@ while True:
     image_landmarks, lip_distance = mouth_open(frame)
     image_landmarks, eye_lid_right_distance = right_eyes_open(frame)
     image_landmarks, eye_lid_left_distance = left_eyes_open(frame)
-
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    faces = face_cascade.detectMultiScale(gray)    
     prev_yawn_status = yawn_status
     prev_right_eye_open_status = right_eye_open_status
     prev_left_eye_open_status = left_eye_open_status
-
+    
+    for (x,y,w,h) in faces:
+        cv2.rectangle(frame, (x,y), (x+w, y+h), (255,0,0),2)
+#         ROI_gray = gray[y:y+h, x:x+w]
+#         ROI_color = frame[y:y+h, x:x+w]
+    
     if lip_distance > 15:
         yawn_status = True
-
+        
         cv2.putText(frame, 'subject is yawning', (10, 100),
                    cv2.FONT_HERSHEY_COMPLEX, 0.5, (0,0,255), 1)
-
+        
 #         output_text = 'Yawn Count: ' + str(yawns + 1)
-
+        
 #         cv2.putText(frame, output_text, (50,50),
 #                    cv2.FONT_HERSHEY_COMPLEX, 1, (0,255,127), 2)
     else:
         yawn_status = False
-
+    
     if eye_lid_right_distance > 3:
         right_eye_open_status = True
-
+        
         cv2.putText(frame, 'right eye is open', (10, 20),
-                   cv2.FONT_HERSHEY_COMPLEX, 0.5, (0,255,255), 1)
-
+                   cv2.FONT_HERSHEY_COMPLEX, 0.5, (0,255,0), 1)
+        
     else:
         right_eye_open_status = False
         cv2.putText(frame, 'right eye is closed', (10, 20),
-                   cv2.FONT_HERSHEY_COMPLEX, 0.5, (0,255,255), 1)
-
+                   cv2.FONT_HERSHEY_COMPLEX, 0.5, (0,255,0), 1)
+    
     if eye_lid_left_distance > 3:
             left_eye_open_status = True
 
             cv2.putText(frame, 'left eye is open', (10, 40),
-                       cv2.FONT_HERSHEY_COMPLEX, 0.5, (255,0,0), 1)
+                       cv2.FONT_HERSHEY_COMPLEX, 0.5, (0,255,0), 1)
     else:
         left_eye_open_status = False
         cv2.putText(frame, 'left eye is closed', (10, 40),
-                   cv2.FONT_HERSHEY_COMPLEX, 0.5, (255,0,0), 1)
-
+                   cv2.FONT_HERSHEY_COMPLEX, 0.5, (0,255,0), 1)
+        
     if prev_yawn_status == True and yawn_status ==False:
         yawns += 1
-
+        
     cv2.imshow('Live Landmarks', image_landmarks)
-    cv2.imshow('Yawn Detection', frame)
-
+    cv2.imshow('Drowsy Detection', frame)
+    
     if cv2.waitKey(1) == 13:
         break
-
+        
 cap.release()
 cv2.destroyAllWindows()
