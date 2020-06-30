@@ -89,7 +89,7 @@ def right_eyes_open(image):
     top_eye_lid_right_center = top_eye_lid_right(landmarks)
     bottom_eye_lid_right_center = bottom_eye_lid_right(landmarks)
     eye_lid_right_distance = abs(top_eye_lid_right_center - bottom_eye_lid_right_center)
-    print('eye right distance:',eye_lid_right_distance)
+    # print('eye right distance:',eye_lid_right_distance)
     return image_with_landmarks, eye_lid_right_distance
 
 # for left eyes
@@ -119,7 +119,7 @@ def left_eyes_open(image):
     top_eye_lid_left_center = top_eye_lid_left(landmarks)
     bottom_eye_lid_left_center = bottom_eye_lid_left(landmarks)
     eye_lid_left_distance = abs(top_eye_lid_left_center - bottom_eye_lid_left_center)
-    print('eye left distance:',eye_lid_left_distance)
+    # print('eye left distance:',eye_lid_left_distance)
     return image_with_landmarks, eye_lid_left_distance
 
 # yawn detector main program trial and error
