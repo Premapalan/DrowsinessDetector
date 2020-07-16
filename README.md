@@ -34,7 +34,7 @@ python3 drowsiness_detector.py
 ## samples
 ![Eyes open](/images/eyesOpen.png)
 ![Yawning when eyes are opened](/images/YawningEyesOpen.png)
-![Yawning when eyes are opened](/images/awningEyesClosed.png)
+![Yawning when eyes are opened](/images/YawningEyesClosed.png)
 
 
 ## Current work
