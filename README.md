@@ -31,6 +31,12 @@
 
 python3 drowsiness_detector.py
 
+## samples
+![Eyes open](/images/eyesOpen.png)
+![Yawning when eyes are opened](/images/YawningEyesOpen.png)
+![Yawning when eyes are opened](/images/awningEyesClosed.png)
+
+
 ## Current work
 
 Yawn detection and number of times yawn detected(count) has been implemented.
